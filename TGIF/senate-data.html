@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Congress 113 Senate</title>
+        <meta charset="UTF-8">
+        <!--To ensure proper rendering and touch zooming-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!--containing element to wrap site contents.-->
+        <div class="container mt-3">
+            <div class="card">
+                <div class="card-header;" class="border border-0;">
+                    <header>
+                        <nav>
+                            <div class="d-flex p-3">
+                                <img id="logo1" src="img/logo1.jpg" alt="logo1" class="p-2 mr-auto" width="500" height="250">
+                                <div style="padding-top: 2rem;">                       
+                                    <h1 class="p-2">Transparent Government In Fact</h1>
+                                </div>
+                                <i class='far fa-envelope' style='font-size:24px'><a class="p-2" href="mailto:info@tgif.net">info@tgif.net</a></i>
+                            </div>
+                            <ul class="nav nav-tabs" style="background-color: lavender;">
+                                <li class="nav-item">
+                                    <a style="background-color:lavender;" class="nav-link active" href="home-data.html">Home</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a style="background-color:lavender;" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Congress 113</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="senate-data.html">Senate</a></li>
+                                        <li><a class="dropdown-item" href="house-data.html">House</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a style="background-color:lavender;" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Attendance</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="senate__attendance_statistics.html">Senate</a></li>
+                                        <li><a class="dropdown-item" href="house_attendance_statistics.html">House</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a style="background-color:lavender;" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Party Loyalty</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="senate_party-loyalty_statistics.html">Senate</a></li>
+                                        <li><a class="dropdown-item" href="house_party-loyalty_statistics.html">House</a></li>
+                                    </ul>
+                                </li>
+                            </ul>    
+                        </nav>
+                    </header>
+                </div>
+                <!--Table container-->
+                <div class="card-body">
+                    <h2>Senators</h2><br>
+                    <p style="text-align: justify;">First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
+                    <div div class="container" id="senators"> 
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Name</th><th>Party</th><th>State</th><th>Years in Office</th><th>% Votes w/ Party</th>
+                                </tr>
+                            </thead>
+                            <tbody id="senatorsData">
+                                <tr v-for="senator in senators">
+                                    <td><a v-bind:href="senator.url">{{senator.first_name}} {{senator.middle_name}} {{senator.last_name}}</a></td> 
+                                    <td>{{senator.party}}</td>
+                                    <td>{{senator.state}}</td>
+                                    <td>{{senator.seniority}}</td>
+                                    <td>{{senator.votes_with_party_pct.toFixed()}}%</td>
+                                </tr>
+                            </tbody> 
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer" style="background-color:lavender;">
+                    <p class="text-center" style="padding-top: 1rem;">2016 TGIF | All Rights Reserved</p>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!--Fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!--<script src="js/main_senate.js"></script>-->
+        <!--Vue.js framework-->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="js/main.js"></script>
+        
+    </body>
+</html>

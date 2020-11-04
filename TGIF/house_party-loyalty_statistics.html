@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>House Party Loyalty Statistics</title>
+        <meta charset="UTF-8">
+        <!--To ensure proper rendering and touch zooming-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="container mt-3">
+            <div class="card">
+                <div class="card-header;" class="border border-0;">
+                    <header>
+                        <nav>
+                            <div class="d-flex p-3">
+                                <img id="logo1" src="img/logo1.jpg" alt="logo1" class="p-2 mr-auto" width="500" height="250">
+                                <div style="padding-top: 2rem;">                       
+                                    <h1 class="p-2">Transparent Government In Fact</h1>
+                                </div>
+                                <i class='far fa-envelope' style='font-size:24px'><a class="p-2" href="mailto:info@tgif.net">info@tgif.net</a></i>
+                            </div>
+                            <ul class="nav nav-tabs" style="background-color: lavender;">
+                                <li class="nav-item">
+                                    <a style="background-color:lavender;" class="nav-link active" href="home-data.html">Home</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a style="background-color:lavender;" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Congress 113</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="senate-data.html">Senate</a></li>
+                                        <li><a class="dropdown-item" href="house-data.html">House</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <li><a style="background-color:lavender;" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Attendance</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="senate__attendance_statistics.html">Senate</a></li>
+                                        <li><a class="dropdown-item" href="house_attendance_statistics.html">House</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a style="background-color:lavender;" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Party Loyalty</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="senate_party-loyalty_statistics.html">Senate</a></li>
+                                        <li><a class="dropdown-item" href="house_party-loyalty_statistics.html">House</a></li>
+                                    </ul>
+                                </li>
+                            </ul>    
+                        </nav>
+                    </header>
+                </div>
+                <div class="card-body"  id="senatorsData">
+                    <!--Table container-->
+                    <div class="row">
+                        <div class="col">
+                            <h2>Party Loyalty</h2>
+                            <p style="text-align: justify">Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, 
+                                tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda.
+                            </p>
+                        </div>
+                        <div class="col">
+                            <h2>Senate at a glance</h2>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Party</th>
+                                        <th>Number of Reps</th>
+                                        <th>% Voted with Party</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Republicans</td>
+                                        <td>{{statistics.numberOfRepublicans.length}}</td>
+                                        <td>{{statistics.percentageOfRepublicans.toFixed()}}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Democrats</td>
+                                        <td>{{statistics.numberOfDemocrats.length}}</td>
+                                        <td>{{statistics.percentageOfDemocrats.toFixed()}}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Independents</td>
+                                        <td>{{statistics.numberOfIndependents.length}}</td>
+                                        <td>{{statistics.percentageOfIndependents.toFixed()}}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td>{{statistics.totalMembers}}</td>
+                                        <td>{{statistics.percentageTotal.toFixed()}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h2>Least Loyal (Bottom 10% of Party)</h2>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Number Party Votes</th>
+                                        <th>% Party Votes</th>
+                                    </tr>
+                                </thead>
+                                <!--<tbody id="leastLoyal">-->
+                                    <tbody>
+                                        <tr v-for="least in statistics.leastLoyal">
+                                            <td><a v-bind:href="least.url">{{least.first_name}} {{least.middle_name}} {{least.last_name}}</a></td>
+                                            <td>{{least.missed_votes}}</td>
+                                            <td>{{least.votes_with_party_pct.toFixed()}}%</td>
+                                        </tr>
+                                    </tbody>
+                                <!--</tbody>-->
+                            </table>
+                        </div>
+                        <div class="col">
+                            <h2>Most Loyal (Top 10% of Party)</h2>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Number Party Votes</th>
+                                        <th>% Party Votes</th>
+                                    </tr>
+                                </thead>
+                                <!--<tbody id="mostLoyal">-->
+                                <tbody>
+                                    <tr v-for="most in statistics.mostLoyal">
+                                        <td><a v-bind:href="most.url">{{most.first_name}} {{most.middle_name}} {{most.last_name}}</a></td>
+                                        <td>{{most.total_votes}}</td>
+                                        <td>{{most.votes_with_party_pct.toFixed()}}%</td>
+                                    </tr>
+                                </tbody>
+                                <!--</tbody>-->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer" style="background-color:lavender;">
+                    <p class="text-center" style="padding-top: 1rem;">2016 TGIF | All Rights Reserved </p>
+                </div>
+            </div>
+        </div>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!--Fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!--<script src="js/main_house.js"></script>-->
+        <!--Vue.js framework-->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="js/main1.js"></script> 
+    </body>
+</html> 
